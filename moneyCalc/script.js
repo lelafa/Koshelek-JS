@@ -6,6 +6,7 @@ totalMoneyIncome = document.querySelector(".total__money-income"),
 totalMoneyExpenses = document.querySelector(".total__money-expenses"),
 historyList = document.querySelector(".history__list"),
 form = document.getElementById("form"),
+ClearButton = document.querySelector(".operation__clear"),
 operationName = document.querySelector(".operation__name"),
 operationAmount = document.querySelector(".operation__amount");
 
@@ -75,6 +76,11 @@ operationName.value = "";
 operationAmount.value = "";
 };
 
+const ClearOperation = (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    };
+
 const deleteOperation = (event) => {
     const target = event.target;
 if(target.classList.contains("history__delete")){
@@ -93,6 +99,7 @@ const init = () => {
 };
 
 form.addEventListener("submit", addOperation);
+ClearButton.addEventListener("click", ClearOperation);
 
 historyList.addEventListener("click", deleteOperation);
 init();
